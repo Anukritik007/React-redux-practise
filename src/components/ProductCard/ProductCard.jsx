@@ -1,8 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import "./ProductCard.css";
+import { addItemToCart } from "../../redux/cart/cartActions";
 
-const ProductCard = ({ title, description, price }) => {
-  const onAddToCart = () => {};
+const ProductCard = ({ id, title, description, price }) => {
+  const dispatch = useDispatch();
+  const onAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        id,
+        name: title,
+      })
+    );
+  };
 
   return (
     <div className="card">
